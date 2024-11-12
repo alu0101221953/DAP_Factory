@@ -1,9 +1,8 @@
-import concreteFactories.windows.WindowsButton;
-import concreteFactories.windows.WindowsDialog;
+import concreteFactories.windows.*;
 
 public class Main {
     public static void main(String[] args) {
-        WindowsDialog windowsDialog = new WindowsDialog();
-        windowsDialog.render();
+        WindowsMenu windowsMenu = new WindowsMenu();
+        windowsMenu.render();
     }
 }
