@@ -51,6 +51,8 @@ public class WindowsMenu implements Menu {
         // Create buttons
         JButton button1 = new JButton("Create Windows Button");
         JButton button2 = new JButton("Create Windows Dialog");
+        JButton button3 = new JButton("Show Notification");
+        JButton button4 = new JButton("Show System Info");
 
         // Add action listeners to buttons
         button1.addActionListener(e -> {
@@ -63,11 +65,26 @@ public class WindowsMenu implements Menu {
             windowsDialog.render();
         });
 
+        button3.addActionListener(e -> {
+            WindowsNotificationCenter notificationCenter = new WindowsNotificationCenter();
+            notificationCenter.showNotification("Notification Title", "This is a Windows notification.");
+        });
+
+        button4.addActionListener(e -> {
+            WindowsNotificationCenter notificationCenter = new WindowsNotificationCenter();
+            notificationCenter.showSystemInfoNotification();
+        });
+
         // Add buttons to the frame
-        JPanel panel = new JPanel();
-        panel.add(button1);
-        panel.add(button2);
-        frame.getContentPane().add(panel, BorderLayout.SOUTH);
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        panel.add(button4);
+        frame.getContentPane().add(panel, BorderLayout.NORTH);
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.add(button1);
+        bottomPanel.add(button2);
+        bottomPanel.add(button3);
+        frame.getContentPane().add(bottomPanel, BorderLayout.SOUTH);
 
         // Set the menu bar for the frame
         frame.setJMenuBar(menuBar);
