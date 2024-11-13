@@ -48,6 +48,27 @@ public class WindowsMenu implements Menu {
         // Add the menu to the menu bar
         menuBar.add(menu);
 
+        // Create buttons
+        JButton button1 = new JButton("Create Windows Button");
+        JButton button2 = new JButton("Create Windows Dialog");
+
+        // Add action listeners to buttons
+        button1.addActionListener(e -> {
+            WindowsButton windowsButton = new WindowsButton();
+            windowsButton.render();
+        });
+
+        button2.addActionListener(e -> {
+            WindowsDialog windowsDialog = new WindowsDialog();
+            windowsDialog.render();
+        });
+
+        // Add buttons to the frame
+        JPanel panel = new JPanel();
+        panel.add(button1);
+        panel.add(button2);
+        frame.getContentPane().add(panel, BorderLayout.SOUTH);
+
         // Set the menu bar for the frame
         frame.setJMenuBar(menuBar);
 
