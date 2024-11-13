@@ -53,6 +53,7 @@ public class WindowsMenu implements Menu {
         JButton button2 = new JButton("Create Windows Dialog");
         JButton button3 = new JButton("Show Notification");
         JButton button4 = new JButton("Show System Info");
+        JButton button5 = new JButton("Show User Notification");
 
         // Add action listeners to buttons
         button1.addActionListener(e -> {
@@ -75,9 +76,15 @@ public class WindowsMenu implements Menu {
             notificationCenter.showSystemInfoNotification();
         });
 
+        button5.addActionListener(e -> {
+            WindowsNotificationCenter notificationCenter = new WindowsNotificationCenter();
+            notificationCenter.showNotification("User Notification", "This is a user notification.");
+        });
+
         // Add buttons to the frame
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         panel.add(button4);
+        panel.add(button5);
         frame.getContentPane().add(panel, BorderLayout.NORTH);
 
         JPanel bottomPanel = new JPanel();
